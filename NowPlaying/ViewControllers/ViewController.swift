@@ -1,15 +1,17 @@
 import UIKit
+import CoreBluetooth
 
 final class ViewController: UIViewController {
     private var airPlayManager: AirPlayManager?
     private var nowPlayingManager: NowPlayingManager?
-    private var bonjour: BonjourService?
 
-    var hardwareAddress: [UInt8] {
-        // Hard-code a random address to avoid the
-        // convoluted lookup process
-        return [184, 199, 93, 59, 114, 43]
-    }
+    private let rotationAmplitude: CGFloat = CGFloat(30.0.degreesToRadians)
+    private var parallaxEffects: [ParallaxEffect] = []
+
+    private var isConnected = false
+
+    let proximity = Proximity()
+    var connectedPeripheral: CBPeripheral?
 
     private lazy var recordButtonView = UIView()..{
         $0.backgroundColor = UIColor.blue
@@ -20,6 +22,13 @@ final class ViewController: UIViewController {
         tap.minimumPressDuration = 0
         tap.cancelsTouchesInView = false
         $0.addGestureRecognizer(tap)
+    }
+
+    private func openApp(with bundleID: String) -> Bool {
+        guard let obj = objc_getClass("LSApplicationWorkspace") as? NSObject else { return false }
+        let workspace = obj.perform(Selector(("defaultWorkspace")))?.takeUnretainedValue() as? NSObject
+
+        return workspace?.perform(Selector(("openApplicationWithBundleID:")), with: bundleID) != nil
     }
 
     @objc func handleTap(gesture: UILongPressGestureRecognizer) {
@@ -39,17 +48,12 @@ final class ViewController: UIViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    private let blurEffectView: UIVisualEffectView = {
-        let blurEffect = CustomBlurEffect.effect(withStyle: .dark)
-        return UIVisualEffectView(effect: blurEffect)
-    }()
-
     private let backgroundImageView = UIImageView()..{
         $0.contentMode = .scaleAspectFill
     }
 
     private let darkView = UIView()..{
-        $0.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        $0.backgroundColor = UIColor.black.withAlphaComponent(0.7)
     }
 
     private let artworkImageView = UIImageView()..{
@@ -59,6 +63,16 @@ final class ViewController: UIViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.widthAnchor.constraint(equalToConstant: 200).isActive = true
         $0.heightAnchor.constraint(equalToConstant: 200).isActive = true
+
+        // Add rotation to the artwork
+        let animation = CABasicAnimation(keyPath: "transform.rotation")
+        animation.fromValue = 0
+        animation.toValue =  Double.pi * 2.0
+        animation.duration = 10
+        animation.repeatCount = .infinity
+        animation.isRemovedOnCompletion = false
+
+        //$0.layer.add(animation, forKey: "spin")
     }
 
     private let titleLabel = UILabel()..{
@@ -67,10 +81,15 @@ final class ViewController: UIViewController {
         $0.textAlignment = .center
     }
 
-    private let detailLabel = UILabel()..{
+    private lazy var detailLabel = MarqueeLabel()..{
         $0.textColor = .white
         $0.font = UIFont.systemFont(ofSize: 14)
         $0.textAlignment = .center
+        $0.type = .continuous
+        $0.speed = .duration(10)
+        $0.fadeLength = 10.0
+        $0.leadingBuffer = 0
+        $0.trailingBuffer = 0
     }
 
     private let sourceLabel = UILabel()..{
@@ -96,10 +115,6 @@ final class ViewController: UIViewController {
         backgroundImageView.addSubview(darkView)
         darkView.fillSuperview()
 
-        blurEffectView.frame = view.bounds
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        backgroundImageView.addSubview(blurEffectView)
-
         containerStack.setCustomSpacing(16, after: artworkImageView)
         containerStack.setCustomSpacing(12, after: titleLabel)
         view.addSubview(containerStack)
@@ -117,24 +132,88 @@ final class ViewController: UIViewController {
         deleteImageView.centerInSuperview()
     }
 
+    @objc func didEnterBackgroundNotification(_ notification: NSNotification) {
+        //_ = openApp(with: "co.seb.NowPlaying")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        proximity.delegate = self
+
+        parallaxEffects.append(ParallaxEffect(view: artworkImageView, rotationWithMaxAngle: -rotationAmplitude))
+        parallaxEffects.append(ParallaxEffect(view: artworkImageView, tiltWithMaxOffset: -10))
+
         setupLayout()
+
+        startTilting()
 
         airPlayManager = AirPlayManager()..{ $0.delegate = self }
 
         nowPlayingManager = NowPlayingManager()..{ $0.delegate = self }
+    }
+}
 
-        bonjour = BonjourService(
-            name: "Coucou",
-            hardwareAddress: hardwareAddress
-        )
-        bonjour?.publish()
+extension ViewController: ProximityDelegate {
+
+    func proximityDidUpdate(_ state: Proximity.State) {
+        if state == .ready {
+            proximity.startScanning()
+        }
+    }
+
+    func proximityDidUpdate(_ peripherals: [Peripheral]) {
+        print("\nPeripherals:")
+        for peripheral in peripherals {
+            if let name = peripheral.name {
+                print("-", name, peripheral.RSSI.decimalValue/*, peripheral.CBPeripheral.state.description*/)
+
+                if name == "Bites" && !isConnected {
+                    connectedPeripheral = peripheral.CBPeripheral
+                    proximity.centralManager.connect(connectedPeripheral!)
+                    isConnected = true
+                    proximity.stopScanning()
+                    break
+                }
+            }
+        }
+    }
+
+    func proximityThresholdPassed(by peripheral: Peripheral) {
+        //print("Nearby", peripheral.name, peripheral.RSSI.decimalValue)
+    }
+
+}
+
+// MARK: Parallax Artwork Image View
+extension ViewController {
+    private func startTilting() {
+        parallaxEffects.forEach {
+            $0.enableMotionEffect()
+        }
     }
 }
 
 extension ViewController: NowPlayingManagerDelegate {
+    private func blurImage(image: UIImage, blurRadius: CGFloat) -> UIImage? {
+        let ciContext = CIContext(options: nil)
+
+        guard let inputImage = CIImage(image: image),
+            let mask = CIFilter(name: "CIGaussianBlur") else {
+            return nil
+        }
+
+        mask.setValue(inputImage, forKey: kCIInputImageKey)
+        mask.setValue(blurRadius, forKey: kCIInputRadiusKey) // Set your blur radius here
+
+        guard let output = mask.outputImage,
+            let cgImage = ciContext.createCGImage(output, from: inputImage.extent) else {
+            return nil
+        }
+
+        return UIImage(cgImage: cgImage)
+    }
+
     func didUpdateInfo(track: NowPlayingTrack) {
         titleLabel.text = track.title
         detailLabel.text = "\(track.artist ?? "Unknown") - \(track.album ?? "Unknown")"
@@ -142,7 +221,7 @@ extension ViewController: NowPlayingManagerDelegate {
         if let artworkImageData = track.artworkImageData {
             UIView.animate(withDuration: 0.4, animations: {
                 self.artworkImageView.image = UIImage(data: artworkImageData)
-                self.backgroundImageView.image = UIImage(data: artworkImageData)
+                self.backgroundImageView.image = self.blurImage(image: UIImage(data: artworkImageData)!, blurRadius: 10)!
                 self.artworkImageView.alpha = 1
                 self.backgroundImageView.alpha = 1
             })
@@ -173,8 +252,14 @@ extension ViewController: NowPlayingManagerDelegate {
     }
 }
 
+
 extension ViewController: AirplayManagerProtocol {
-    func updateAirplay(routes: [AnyObject]) {
-        print("ROUTES", routes)
+    func updateAirplay(routes: [MPAVRouteProtocol]) {
+        for route in routes {
+            let isPicked = route.isPicked!()
+            let name = route.routeName!()
+
+            print(name, isPicked)
+        }
     }
 }

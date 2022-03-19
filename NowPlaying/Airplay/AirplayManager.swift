@@ -3,7 +3,7 @@ import MediaPlayer
 import AVFoundation
 
 protocol AirplayManagerProtocol: AnyObject {
-    func updateAirplay(routes: [AnyObject])
+    func updateAirplay(routes: [MPAVRouteProtocol])
 }
 
 final class AirPlayManager: NSObject {
@@ -23,6 +23,7 @@ final class AirPlayManager: NSObject {
 
         audioDeviceController.setDelegate!(self)
         routingController.setDelegate!(self)
+
         updateAirPlayDevices()
 
         NotificationCenter.default.addObserver(
@@ -35,14 +36,6 @@ final class AirPlayManager: NSObject {
 
     @objc func updateAirPlayDevices() {
         routingController.fetchAvailableRoutes?(completionHandler: { (routes) in
-            for route in routes {
-                guard let devices = route.outputDevices?() else { continue }
-
-                for device in devices {
-                    print(device.name?())
-                }
-            }
-
             self.delegate?.updateAirplay(routes: routes)
         })
     }

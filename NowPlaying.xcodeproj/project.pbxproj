@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,14 +15,18 @@
 		1E13050725BEF8E4008AFB01 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E13050625BEF8E4008AFB01 /* UIView+Layout.swift */; };
 		1E13051425BF0818008AFB01 /* NowPlayingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E13051325BF0818008AFB01 /* NowPlayingManager.swift */; };
 		1E13051825BF1EBC008AFB01 /* NowPlayingModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E13051725BF1EBC008AFB01 /* NowPlayingModels.swift */; };
-		1E6FC2AB26F8FA8E00BD8D8D /* BonjourService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6FC2AA26F8FA8E00BD8D8D /* BonjourService.swift */; };
-		1E6FC2AE26F8FAB100BD8D8D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6FC2AD26F8FAB100BD8D8D /* Utils.swift */; };
-		1E6FC2B026F8FAC600BD8D8D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6FC2AF26F8FAC600BD8D8D /* Constants.swift */; };
-		1EC98E6525C0C93400AC31F7 /* CustomBlurEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC98E6425C0C93400AC31F7 /* CustomBlurEffect.swift */; };
+		1E3633EB270CA41400507FE9 /* Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 1E3633EA270CA41400507FE9 /* Dynamic */; };
 		1EE7907025C1C67A0009A65B /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE7906F25C1C67A0009A65B /* UIView+Extensions.swift */; };
 		1EE7907C25C1F8F80009A65B /* OtherInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE7907B25C1F8F80009A65B /* OtherInfoViewController.swift */; };
 		1EE7908025C221260009A65B /* jailbreak_protect.c in Sources */ = {isa = PBXBuildFile; fileRef = 1EE7907F25C221260009A65B /* jailbreak_protect.c */; };
 		1EE790E825C247270009A65B /* AirplayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE790E725C247270009A65B /* AirplayManager.swift */; };
+		1EF31832276ACFC700CA8718 /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF31831276ACFC700CA8718 /* MarqueeLabel.swift */; };
+		1EF31835276AD61D00CA8718 /* ParallaxEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF31834276AD61D00CA8718 /* ParallaxEffect.swift */; };
+		1EF31837276AD75100CA8718 /* Float+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF31836276AD75100CA8718 /* Float+Extensions.swift */; };
+		1EF3183A276AE62A00CA8718 /* Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF31839276AE62A00CA8718 /* Peripheral.swift */; };
+		1EF3183C276AE68000CA8718 /* CBManagerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF3183B276AE68000CA8718 /* CBManagerState.swift */; };
+		1EF31846276AE72500CA8718 /* Proximity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF31845276AE72500CA8718 /* Proximity.swift */; };
+		1EF3184A276AE74B00CA8718 /* ProximityState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF31849276AE74B00CA8718 /* ProximityState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,15 +40,18 @@
 		1E13050625BEF8E4008AFB01 /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		1E13051325BF0818008AFB01 /* NowPlayingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingManager.swift; sourceTree = "<group>"; };
 		1E13051725BF1EBC008AFB01 /* NowPlayingModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingModels.swift; sourceTree = "<group>"; };
-		1E6FC2AA26F8FA8E00BD8D8D /* BonjourService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonjourService.swift; sourceTree = "<group>"; };
-		1E6FC2AD26F8FAB100BD8D8D /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		1E6FC2AF26F8FAC600BD8D8D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		1EC98E6425C0C93400AC31F7 /* CustomBlurEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBlurEffect.swift; sourceTree = "<group>"; };
 		1EE7906F25C1C67A0009A65B /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		1EE7907625C1D5F70009A65B /* NSTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSTask.h; sourceTree = "<group>"; };
 		1EE7907B25C1F8F80009A65B /* OtherInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherInfoViewController.swift; sourceTree = "<group>"; };
 		1EE7907F25C221260009A65B /* jailbreak_protect.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = jailbreak_protect.c; sourceTree = "<group>"; };
 		1EE790E725C247270009A65B /* AirplayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirplayManager.swift; sourceTree = "<group>"; };
+		1EF31831276ACFC700CA8718 /* MarqueeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarqueeLabel.swift; sourceTree = "<group>"; };
+		1EF31834276AD61D00CA8718 /* ParallaxEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallaxEffect.swift; sourceTree = "<group>"; };
+		1EF31836276AD75100CA8718 /* Float+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extensions.swift"; sourceTree = "<group>"; };
+		1EF31839276AE62A00CA8718 /* Peripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Peripheral.swift; sourceTree = "<group>"; };
+		1EF3183B276AE68000CA8718 /* CBManagerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBManagerState.swift; sourceTree = "<group>"; };
+		1EF31845276AE72500CA8718 /* Proximity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Proximity.swift; sourceTree = "<group>"; };
+		1EF31849276AE74B00CA8718 /* ProximityState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProximityState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E3633EB270CA41400507FE9 /* Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,8 +85,9 @@
 		1E1304DE25BEDA6A008AFB01 /* NowPlaying */ = {
 			isa = PBXGroup;
 			children = (
-				1E6FC2AC26F8FAA200BD8D8D /* Airplay2 */,
-				1E6FB12B26EE952800BD8D8D /* Ressources */,
+				1E6FB12B26EE952800BD8D8D /* Resources */,
+				1EF31838276AE61E00CA8718 /* Proximity */,
+				1EF31833276AD61100CA8718 /* Parallax */,
 				1EE790E625C2471C0009A65B /* Airplay */,
 				1EC98E9725C0DAB700AC31F7 /* ViewControllers */,
 				1EC98E9625C0DAAF00AC31F7 /* NowPlaying */,
@@ -86,7 +95,6 @@
 				1E13050525BEF8B4008AFB01 /* Extensions */,
 				1E1304DF25BEDA6A008AFB01 /* AppDelegate.swift */,
 				1EE7907625C1D5F70009A65B /* NSTask.h */,
-				1E6FC2AF26F8FAC600BD8D8D /* Constants.swift */,
 			);
 			path = NowPlaying;
 			sourceTree = "<group>";
@@ -96,35 +104,27 @@
 			children = (
 				1E13050625BEF8E4008AFB01 /* UIView+Layout.swift */,
 				1EE7906F25C1C67A0009A65B /* UIView+Extensions.swift */,
+				1EF31836276AD75100CA8718 /* Float+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		1E6FB12B26EE952800BD8D8D /* Ressources */ = {
+		1E6FB12B26EE952800BD8D8D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				1E1304EA25BEDA6C008AFB01 /* LaunchScreen.storyboard */,
 				1E1304E825BEDA6C008AFB01 /* Assets.xcassets */,
 				1E1304ED25BEDA6C008AFB01 /* Info.plist */,
 			);
-			path = Ressources;
-			sourceTree = "<group>";
-		};
-		1E6FC2AC26F8FAA200BD8D8D /* Airplay2 */ = {
-			isa = PBXGroup;
-			children = (
-				1E6FC2AA26F8FA8E00BD8D8D /* BonjourService.swift */,
-				1E6FC2AD26F8FAB100BD8D8D /* Utils.swift */,
-			);
-			path = Airplay2;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		1EC98E9525C0DAA500AC31F7 /* Other */ = {
 			isa = PBXGroup;
 			children = (
 				1E1304FF25BEF7D7008AFB01 /* Operator.swift */,
-				1EC98E6425C0C93400AC31F7 /* CustomBlurEffect.swift */,
 				1EE7907F25C221260009A65B /* jailbreak_protect.c */,
+				1EF31831276ACFC700CA8718 /* MarqueeLabel.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -155,6 +155,25 @@
 			path = Airplay;
 			sourceTree = "<group>";
 		};
+		1EF31833276AD61100CA8718 /* Parallax */ = {
+			isa = PBXGroup;
+			children = (
+				1EF31834276AD61D00CA8718 /* ParallaxEffect.swift */,
+			);
+			path = Parallax;
+			sourceTree = "<group>";
+		};
+		1EF31838276AE61E00CA8718 /* Proximity */ = {
+			isa = PBXGroup;
+			children = (
+				1EF31839276AE62A00CA8718 /* Peripheral.swift */,
+				1EF31849276AE74B00CA8718 /* ProximityState.swift */,
+				1EF3183B276AE68000CA8718 /* CBManagerState.swift */,
+				1EF31845276AE72500CA8718 /* Proximity.swift */,
+			);
+			path = Proximity;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -171,6 +190,9 @@
 			dependencies = (
 			);
 			name = NowPlaying;
+			packageProductDependencies = (
+				1E3633EA270CA41400507FE9 /* Dynamic */,
+			);
 			productName = NowPlaying;
 			productReference = 1E1304DC25BEDA6A008AFB01 /* NowPlaying.app */;
 			productType = "com.apple.product-type.application";
@@ -199,6 +221,9 @@
 				Base,
 			);
 			mainGroup = 1E1304D325BEDA6A008AFB01;
+			packageReferences = (
+				1E3633E9270CA41400507FE9 /* XCRemoteSwiftPackageReference "Dynamic" */,
+			);
 			productRefGroup = 1E1304DD25BEDA6A008AFB01 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -226,18 +251,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EE7907025C1C67A0009A65B /* UIView+Extensions.swift in Sources */,
+				1EF3183C276AE68000CA8718 /* CBManagerState.swift in Sources */,
+				1EF31846276AE72500CA8718 /* Proximity.swift in Sources */,
+				1EF3183A276AE62A00CA8718 /* Peripheral.swift in Sources */,
+				1EF31837276AD75100CA8718 /* Float+Extensions.swift in Sources */,
 				1E13050725BEF8E4008AFB01 /* UIView+Layout.swift in Sources */,
 				1E13050025BEF7D7008AFB01 /* Operator.swift in Sources */,
 				1E1304E425BEDA6B008AFB01 /* ViewController.swift in Sources */,
+				1EF3184A276AE74B00CA8718 /* ProximityState.swift in Sources */,
 				1EE790E825C247270009A65B /* AirplayManager.swift in Sources */,
-				1E6FC2AE26F8FAB100BD8D8D /* Utils.swift in Sources */,
 				1EE7907C25C1F8F80009A65B /* OtherInfoViewController.swift in Sources */,
 				1EE7908025C221260009A65B /* jailbreak_protect.c in Sources */,
-				1E6FC2AB26F8FA8E00BD8D8D /* BonjourService.swift in Sources */,
 				1E1304E025BEDA6A008AFB01 /* AppDelegate.swift in Sources */,
 				1E13051425BF0818008AFB01 /* NowPlayingManager.swift in Sources */,
-				1E6FC2B026F8FAC600BD8D8D /* Constants.swift in Sources */,
-				1EC98E6525C0C93400AC31F7 /* CustomBlurEffect.swift in Sources */,
+				1EF31835276AD61D00CA8718 /* ParallaxEffect.swift in Sources */,
+				1EF31832276ACFC700CA8718 /* MarqueeLabel.swift in Sources */,
 				1E13051825BF1EBC008AFB01 /* NowPlayingModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,18 +407,18 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2TE7AHNP9P;
+				DEVELOPMENT_TEAM = JP32D3RJ7V;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/NowPlaying",
 				);
-				INFOPLIST_FILE = NowPlaying/Ressources/Info.plist;
+				INFOPLIST_FILE = NowPlaying/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = co.seb.NowPlaying;
+				PRODUCT_BUNDLE_IDENTIFIER = co.seb.NowPlaying.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -406,18 +434,18 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2TE7AHNP9P;
+				DEVELOPMENT_TEAM = JP32D3RJ7V;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/NowPlaying",
 				);
-				INFOPLIST_FILE = NowPlaying/Ressources/Info.plist;
+				INFOPLIST_FILE = NowPlaying/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = co.seb.NowPlaying;
+				PRODUCT_BUNDLE_IDENTIFIER = co.seb.NowPlaying.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
@@ -447,6 +475,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1E3633E9270CA41400507FE9 /* XCRemoteSwiftPackageReference "Dynamic" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mhdhejazi/Dynamic";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1E3633EA270CA41400507FE9 /* Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E3633E9270CA41400507FE9 /* XCRemoteSwiftPackageReference "Dynamic" */;
+			productName = Dynamic;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1E1304D425BEDA6A008AFB01 /* Project object */;
 }

@@ -1,6 +1,9 @@
 import Foundation
 import MediaPlayer
 
+@objc protocol AuthorHelperProtocol {
+}
+
 protocol NowPlayingManagerDelegate: AnyObject {
     func didUpdateInfo(track: NowPlayingTrack)
     func didUpdateIsPlaying(isPlaying: Bool)
@@ -121,6 +124,7 @@ final class NowPlayingManager: NSObject {
             self.delegate?.didUpdateIsPlaying(isPlaying: isPlaying)
         })
     }
+    
 
     private func updateApp() {
         guard let MRMediaRemoteGetNowPlayingClient = MRMediaRemoteGetNowPlayingClient,
@@ -131,7 +135,7 @@ final class NowPlayingManager: NSObject {
         MRMediaRemoteGetNowPlayingClient(DispatchQueue.main, { (clientObj) in
             let appBundleIdentifier = MRNowPlayingClientGetBundleIdentifier(clientObj)
 
-            print("APP_BUNDLE_IDENTIFIER", appBundleIdentifier)
+            print(appBundleIdentifier)
 
             switch appBundleIdentifier {
             case "com.spotify.client":
@@ -236,6 +240,7 @@ final class NowPlayingManager: NSObject {
         setup()
         updateAll()
 
+        /*
         guard let MRNowPlayingClientCreate = MRNowPlayingClientCreate,
               let MRMediaRemoteSendCommandToClient = MRMediaRemoteSendCommandToClient else {
             return
@@ -248,6 +253,7 @@ final class NowPlayingManager: NSObject {
         //let test = MRMediaRemoteSendCommandToClient(2, args, nil, client, 1, 0, nil)
 
         print("CLIENT", client)
+        */
     }
 
     // MARK: - Public
